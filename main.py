@@ -14,14 +14,14 @@ class Convertisseur:
         self.COEFF_ASCII = 255//(len(self.CARS_ASCII)-1)
 
         self.police = pg.font.SysFont('Courier', taille_police, bold=True)
-        self.ETAPE_CARS = int(taille_police * 0.6)
+        self.ESPACEMENT_CARS = int(taille_police * 0.6)
         self.CARS_ASCII_RENDUS = [self.police.render(car, False, 'white') for car in self.CARS_ASCII]
 
 
     def dessiner_image_convertie(self):
         indices_cars = self.image // self.COEFF_ASCII
-        for x in range(0, self.LARG, self.ETAPE_CARS):
-            for y in range(0, self.HAUT, self.ETAPE_CARS):
+        for x in range(0, self.LARG, self.ESPACEMENT_CARS):
+            for y in range(0, self.HAUT, self.ESPACEMENT_CARS):
                 indice_car = indices_cars[x, y]
                 if indice_car:
                     self.surface.blit(self.CARS_ASCII_RENDUS[indice_car], (x, y))
